@@ -3,10 +3,21 @@
   "serviceConfiguration": {
     "apiName": "reactamplified01",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "E:\\WorkSpace\\react-amplified-01\\amplify\\backend\\api\\reactamplified01\\schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-751f42ef-b579-4787-8d7f-e276f936f48e/amplify/backend/api/reactamplified01/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 7
-    }
+      "keyDescription": "api key description",
+      "expirationTime": 30
+    },
+    "conflictResolution": {
+      "defaultResolutionStrategy": {
+        "type": "AUTOMERGE"
+      }
+    },
+    "additionalAuthTypes": [
+      {
+        "mode": "AWS_IAM"
+      }
+    ]
   }
 }
