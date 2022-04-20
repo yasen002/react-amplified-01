@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [studentData, setStudentData] = useState(null);
-  const [attributes, setAttributes] = useState(null);
   //if not authenticated, direct to home page.
   // if authenticated, show student data.
   useEffect(() => {
