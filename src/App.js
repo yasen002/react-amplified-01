@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./Home";
+import Dashboard from "./Dashboard";
+import React, { useEffect, useState } from "react";
+import { Auth } from "aws-amplify";
 
 function App() {
+  const [authState, setAuthState] = useState(false);
+  useEffect(() => {
+    if (authState === false) {
+      // var data = Auth.federatedSignIn({ provider: "Google" });
+      getStudentData().catch((e) => console.log(e));
+    }
+
+    async function getStudentData() {
+      const user = await Auth.currentAuthenticatedUser();
+      // const { attributes } = await user;
+      // const { email } = await attributes;
+      console.log(user);
+      setAuthState(true);
+    }
+  }, [authState]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
